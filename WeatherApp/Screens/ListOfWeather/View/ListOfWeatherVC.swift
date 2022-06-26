@@ -13,6 +13,7 @@ import SkeletonView
 class ListOfWeatherVC: UIViewController {
     private let disposeBag = DisposeBag()
     var weatherListVM = WeatherListVM()
+    private let seagueListToDetail = "seagueListToDetail" // It should use in constant file
     @IBOutlet weak var tblViewWeatherList: UITableView!
     
     override func viewDidLoad() {
@@ -72,8 +73,16 @@ class ListOfWeatherVC: UIViewController {
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { (weatherList) in
                 //whole object here to show all the news on next screen
-                print(weatherList)
+                self.performSegue(withIdentifier: self.seagueListToDetail, sender: weatherList) // I prefer to use cutom StoryBoard class here.
             }).disposed(by: self.disposeBag)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == self.seagueListToDetail {
+            guard let detailVC = segue.destination as? DetailOfWeatherVC else {return}
+            detailVC.detailOfWeatherVM.weatherListDetail$.accept(sender as? WeatherList)
+            detailVC.detailOfWeatherVM.requestWeatherDetailData()
+        }
     }
 }
     
