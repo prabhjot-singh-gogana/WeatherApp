@@ -54,8 +54,18 @@ public extension PSJsonDecoding where PSMapperModel: Codable {
 class APIManager<T: PSJsonDecoding> {
     
     
-    enum RequestURL: String {
-        case baseURL = "https://newsapi.org/v2/top-headlines?country=us&pageSize=10&apiKey=12aea93cf9e04cc69eb396e65c735711"
+    enum RequestURL {
+        case list
+        case detail(Int)
+        
+        var apiName: String {
+            switch self {
+            case .list:
+                return "/list"
+            case .detail(let weatherID):
+                return "/\(weatherID)"
+            }
+        }
     }
     
     enum ApiResult {
@@ -86,11 +96,12 @@ class APIManager<T: PSJsonDecoding> {
     
     // for requesting the data from url with parameters and http method
     
-    static func requestData(method:HTTPMethod,parameters: [String:Any]?,completion: @escaping (ApiResult)->Void) {
+    static func requestData(requestURL:RequestURL, method:HTTPMethod,parameters: [String:Any]?,completion: @escaping (ApiResult)->Void) {
         
         let header =  ["Content-Type": "application/x-www-form-urlencoded"]
-        
-        var urlRequest = URLRequest(url: URL(string: RequestURL.baseURL.rawValue)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
+        let baseURL = "https://testapi.io/api/olestang/weather" //We can use the base url in info file
+        let strURL = baseURL + requestURL.apiName
+        var urlRequest = URLRequest(url: URL(string: strURL)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
         urlRequest.allHTTPHeaderFields = header
         urlRequest.httpMethod = method.rawValue
         var newParams: String?  {
@@ -104,7 +115,7 @@ class APIManager<T: PSJsonDecoding> {
         }
         if let parameters = newParams {
             if method != .post {
-                urlRequest.url = URL(string: RequestURL.baseURL.rawValue + parameters)
+                urlRequest.url = URL(string: strURL + parameters)
             } else {
                 urlRequest.httpBody = parameters.data(using: .utf8)
             }
