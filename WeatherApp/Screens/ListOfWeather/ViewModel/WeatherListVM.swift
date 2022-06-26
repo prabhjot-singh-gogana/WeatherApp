@@ -34,13 +34,10 @@ class WeatherListVM {
             // just putting the delay so that can check the waiting time
             switch result {
             case .success(let object):
-//                self.loading.onNext(false)
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3, execute: {
-                    self.loading.accept(false)
-                    self.weatherList$.accept(object.list)
-                })
+                self.loading.accept(false)
+                self.weatherList$.accept(object.list)
             case .failure(let failure) :
-//                self.loading.onNext(false)
+                self.loading.accept(false)
                 switch failure {
                 case .connectionError:
                     self.error.onNext(.internetError("Check your Internet connection."))

@@ -114,7 +114,7 @@
                     <navigationItem key="navigationItem" id="Bod-BE-gcM"/>
                     <connections>
                         <outlet property="tblViewWeatherList" destination="bsp-eO-DyR" id="8tD-qD-5GG"/>
-                        <segue destination="ydJ-MH-iEc" kind="show" id="5g6-MQ-knX"/>
+                        <segue destination="ydJ-MH-iEc" kind="show" identifier="seagueListToDetail" id="s7q-kd-LlD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -129,37 +129,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l7c-gA-Z5D">
-                                <rect key="frame" x="20" y="199" width="374" height="663"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l7c-gA-Z5D">
+                                <rect key="frame" x="20" y="187" width="374" height="675"/>
+                                <color key="backgroundColor" systemColor="separatorColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min Temp." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vs8-dS-UQ7">
-                                <rect key="frame" x="20" y="105" width="158" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min Temp." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vs8-dS-UQ7">
+                                <rect key="frame" x="20" y="93" width="130" height="20.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="158" id="XS0-YQ-NNj"/>
-                                    <constraint firstAttribute="height" constant="35" id="pvJ-7T-cyd"/>
+                                    <constraint firstAttribute="width" constant="130" id="XS0-YQ-NNj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Temp." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKj-6Y-SiT">
-                                <rect key="frame" x="236" y="105" width="158" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Temp." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKj-6Y-SiT">
+                                <rect key="frame" x="264" y="93" width="130" height="20.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="158" id="AMo-AL-Hge"/>
-                                    <constraint firstAttribute="height" constant="35" id="gaH-g1-ZXj"/>
+                                    <constraint firstAttribute="width" constant="130" id="AMo-AL-Hge"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAF-kc-acZ">
-                                <rect key="frame" x="20" y="155" width="0.0" height="0.0"/>
+                                <rect key="frame" x="20" y="128.5" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Weather Details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ori-s6-8YI">
+                                <rect key="frame" x="20" y="158.5" width="150.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -168,12 +170,18 @@
                         <viewLayoutGuide key="safeArea" id="8my-me-vE4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Vs8-dS-UQ7" firstAttribute="top" secondItem="8my-me-vE4" secondAttribute="top" constant="17" id="8lk-8N-UvW"/>
+                            <constraint firstItem="l7c-gA-Z5D" firstAttribute="bottom" secondItem="8my-me-vE4" secondAttribute="bottom" id="2SP-jr-sij"/>
+                            <constraint firstItem="8my-me-vE4" firstAttribute="trailing" secondItem="l7c-gA-Z5D" secondAttribute="trailing" constant="20" id="4R3-5b-QCv"/>
+                            <constraint firstItem="Vs8-dS-UQ7" firstAttribute="top" secondItem="8my-me-vE4" secondAttribute="top" constant="5" id="8lk-8N-UvW"/>
                             <constraint firstItem="Vs8-dS-UQ7" firstAttribute="leading" secondItem="8my-me-vE4" secondAttribute="leading" constant="20" id="9G8-Cw-Jof"/>
+                            <constraint firstItem="l7c-gA-Z5D" firstAttribute="leading" secondItem="8my-me-vE4" secondAttribute="leading" constant="20" id="Kvp-KU-Ua6"/>
                             <constraint firstItem="RAF-kc-acZ" firstAttribute="leading" secondItem="8my-me-vE4" secondAttribute="leading" constant="20" id="QeO-SU-2HE"/>
-                            <constraint firstItem="GKj-6Y-SiT" firstAttribute="top" secondItem="8my-me-vE4" secondAttribute="top" constant="17" id="lXL-MC-xK9"/>
+                            <constraint firstItem="l7c-gA-Z5D" firstAttribute="top" secondItem="kEe-Jf-iqx" secondAttribute="top" constant="187" id="aqb-8M-Lsf"/>
+                            <constraint firstItem="GKj-6Y-SiT" firstAttribute="top" secondItem="8my-me-vE4" secondAttribute="top" constant="5" id="lXL-MC-xK9"/>
+                            <constraint firstItem="l7c-gA-Z5D" firstAttribute="top" secondItem="ori-s6-8YI" secondAttribute="bottom" constant="8" id="vTT-c0-wxt"/>
                             <constraint firstItem="8my-me-vE4" firstAttribute="trailing" secondItem="GKj-6Y-SiT" secondAttribute="trailing" constant="20" id="w4h-Uf-pqz"/>
                             <constraint firstItem="RAF-kc-acZ" firstAttribute="top" secondItem="Vs8-dS-UQ7" secondAttribute="bottom" constant="15" id="wMV-ig-a1J"/>
+                            <constraint firstItem="ori-s6-8YI" firstAttribute="leading" secondItem="8my-me-vE4" secondAttribute="leading" constant="20" id="ygX-ZV-KHQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GHb-0l-8vU"/>
@@ -210,6 +218,9 @@
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
